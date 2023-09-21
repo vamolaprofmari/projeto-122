@@ -3,9 +3,21 @@ y = 0;
 
 drawApple = "";
 
+var screenWidth = 0;
+var screenHeight = 0;
+
+var apple = "";
+
+var speakData = "";
+var toNumber = "";
+
 var SpeechRecognition = window.webkitSpeechRecognition;
   
 var recognition = new SpeechRecognition();
+
+function preload(){
+  apple.loadImage("apple.png")
+}
 
 function start()
 {
@@ -36,15 +48,14 @@ function setup() {
   screenWidth = window.innerWidth;
   screenHeight = window.innerHeight;
 
-  createCanvas("screenWidth, screenHeight-150");
-  canvas.position("75, 150");
+  createCanvas(screenWidth, screenHeight-150);
+  canvas.position(75, 150);
 }
 
 function draw() {
   if(drawApple == "set")
   {
-    document.getElementById("status").innerHTML = toNumber + " maçãs desenhadas";
-    drawApple = "";
+    
    
     for(var i = 1; i <= to_number; i++);
     {
@@ -53,8 +64,11 @@ function draw() {
       Image(apple, x, y, 50, 50);
 
     }
-
-    
+    document.getElementById("status").innerHTML = toNumber + " maçãs desenhadas";
+   
+    speakData = to_number + " maçãs desenhadas";
+    speak();
+    drawApple = "";
     
       
     }
@@ -71,15 +85,6 @@ function speak(){
     speakData = "";
 }
 
-var screenWidth = 0;
-var screenHeight = 0;
 
-var apple = "";
 
-var speakData = "";
-var toNumber = "";
-
-function preload(){
-  apple.loadImage("apple.png")
-}
 
